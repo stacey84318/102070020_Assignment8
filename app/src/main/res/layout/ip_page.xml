@@ -18,7 +18,8 @@
         android:id="@+id/edIP"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:text="172.20.10.2" />
+        android:text="172.20.10.2"
+        />
 
     <Button
         android:layout_width="wrap_content"

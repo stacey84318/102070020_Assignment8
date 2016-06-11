@@ -16,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:inputType="numberSigned"
         android:height="50dp"
         android:nestedScrollingEnabled="false"
         android:minWidth="100dp" />
@@ -30,6 +31,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:inputType="numberSigned"
         android:layout_marginLeft="157dp"
         android:layout_marginStart="157dp" />
 

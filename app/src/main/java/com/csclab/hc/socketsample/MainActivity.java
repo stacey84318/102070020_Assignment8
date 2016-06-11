@@ -24,8 +24,11 @@ public class MainActivity extends Activity implements android.view.View.OnClickL
     Button ipSend;
     public static String ipAdd;
     public static Socket socket;
+
     /** Init Variable for Page 1 **/
     Button plus,minus,m,t,clean;
+
+    //if the Number Should be used in another Page use"static"
     public static float result;
     public static EditText num1;
     public static EditText num2;
@@ -71,6 +74,7 @@ public class MainActivity extends Activity implements android.view.View.OnClickL
         //TODO: Change layout to activity_main
         setContentView(R.layout.activity_main);
 
+        //name the things in layout
          plus = (Button) findViewById(R.id.plus);
         plus.setOnClickListener(this);
         minus = (Button) findViewById(R.id.minus);
@@ -86,22 +90,19 @@ public class MainActivity extends Activity implements android.view.View.OnClickL
         num2.setOnClickListener(this);
 
 
-
+    //if click the operation button , assign the numer and answer and then change Page
         plus.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View view){
                 n1 =  Float.parseFloat(num1.getText().toString());
                 n2 =  Float.parseFloat(num2.getText().toString());
                         result = n1 + n2;
                         oper = "+";
-           //     writer.println(result);
-             //   writer.flush();
                 Intent intent = new Intent();
-                    intent.setClass(MainActivity.this, ResultActivity.class);
+                intent.setClass(MainActivity.this, ResultActivity.class);
                 MainActivity.this.startActivity(intent);
 
 
             }
-
             });
         minus.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View view){
@@ -120,12 +121,15 @@ public class MainActivity extends Activity implements android.view.View.OnClickL
             public void onClick(View view) {
                 n1 =  Float.parseFloat(num1.getText().toString());
                 n2 =  Float.parseFloat(num2.getText().toString());
-                result = n1 / n2;
-                oper = "/";
+                if(n2 != 0) {
 
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, ResultActivity.class);
-                MainActivity.this.startActivity(intent);
+                    result = n1 / n2;
+                    oper = "/";
+
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this, ResultActivity.class);
+                    MainActivity.this.startActivity(intent);
+                }
             }
 
         });
@@ -142,10 +146,14 @@ public class MainActivity extends Activity implements android.view.View.OnClickL
             }
 
         });
+
+        //if click Clean Button Clean the text num1 and num2
         clean.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
                num1.setText("");
+                n1 =0 ;
                 num2.setText("");
+                n2=0;
             }
 
         });

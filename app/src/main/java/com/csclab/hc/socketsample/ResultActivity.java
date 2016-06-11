@@ -26,9 +26,13 @@ public class ResultActivity extends Activity {
         ans = (TextView) this.findViewById(R.id.answer);
         re = (Button) this.findViewById(R.id.re);
         rec = (Button)this.findViewById(R.id.button);
+
+        //send string to Server
         ans.setText(n1 + op + n2 + " = " + result);
         MainActivity.writer.println(ans.getText());
         MainActivity.writer.flush();
+
+        //if click return then reset all variable and go back to MainActivity
         re.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +40,8 @@ public class ResultActivity extends Activity {
                 MainActivity.n2 = 0;
                 MainActivity.result = 0;
                 MainActivity.oper = "";
+
+                //set the boolen r to true to tell MainActivity do not input IP again
                 MainActivity.r=true;
                 Intent intent = new Intent();
                 intent.setClass(ResultActivity.this, MainActivity.class);
@@ -43,6 +49,8 @@ public class ResultActivity extends Activity {
 
             }
         });
+
+        //if click reconnect , reset the n1 n2 answer oper and go to MainActivity
         rec.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {

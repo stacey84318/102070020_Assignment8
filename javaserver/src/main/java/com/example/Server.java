@@ -18,19 +18,22 @@ public class Server implements Runnable{
     private Thread thread;
     private ServerSocket servSock;
     BufferedReader br ;
+
+    //to generate a window for anser
     private JFrame window = new JFrame("Result From App");
     private JLabel s = new JLabel();
     private Container contain = this.window.getContentPane();
     
     public Server(){
 
+        //set the window and container and text in construct
     	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
 		window.setVisible(true);
 		window.setSize(500	, 200);
 		contain.setLayout(null);
 		this.s.setText("The Result From App is : " );
-		this.s.setBounds(20, 20, 300, 50);
+		this.s.setBounds(20, 20, 400, 50);
 		this.s.setVisible(true);
 		contain.add(s);
         try {
@@ -61,18 +64,17 @@ public class Server implements Runnable{
             	System.out.println("Waiting");
                 // After client connected, create client socket connect with client
                 Socket clntSock = servSock.accept();
-                //InputStream in = clntSock.getInputStream();
 
                 System.out.println("Connected!!");
                 br = new BufferedReader(new InputStreamReader(clntSock.getInputStream()));
-                // Transfer data
+
+                // read line from client
                 String line = br.readLine();
                 
                 if(!line.isEmpty()){
-                	System.out.println(line);
-            		
+            		//re set the text
             		this.s.setText("The Result From App is : " +line);
-            		
+            		//repaint window
             		window.repaint();
             		
                 	
